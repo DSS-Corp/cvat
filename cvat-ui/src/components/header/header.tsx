@@ -34,7 +34,8 @@ import notification from 'antd/lib/notification';
 import config from 'config';
 
 import { Organization, getCore } from 'cvat-core-wrapper';
-import { CVATLogo } from 'icons';
+// import { CVATLogo } from 'icons';
+import { HGLogoSmIcon } from 'icons';
 import ChangePasswordDialog from 'components/change-password-modal/change-password-modal';
 import CVATTooltip from 'components/common/cvat-tooltip';
 import { switchSettingsModalVisible as switchSettingsModalVisibleAction } from 'actions/settings-actions';
@@ -438,7 +439,7 @@ function HeaderComponent(props: Props): JSX.Element {
         <Layout.Header className='cvat-header'>
             <GlobalHotKeys keyMap={subKeyMap(componentShortcuts, keyMap)} handlers={handlers} />
             <div className='cvat-left-header'>
-                <Icon className='cvat-logo-icon' component={CVATLogo} />
+                <Icon className='cvat-logo-icon' component={HGLogoSmIcon} />
                 <Button
                     className={getButtonClassName('projects')}
                     type='link'

@@ -22,7 +22,7 @@ $social-google-background: #4286f5;
 
 .cvat-signing-title {
     .ant-typography {
-        color: $heading-color;
+        // color: $heading-color; // HG THEME
         margin: 0;
         font-size: 68px;
         font-family: $heading-font;
@@ -46,6 +46,7 @@ $social-google-background: #4286f5;
 }
 
 .cvat-signing-background {
+    background-color: $background-color;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -278,7 +279,7 @@ $social-google-background: #4286f5;
 
                 &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     height: $grid-unit-size * 2;
                     width: $grid-unit-size * 2;
                     border-radius: $border-radius-base;
@@ -306,7 +307,7 @@ $social-google-background: #4286f5;
 
                 &::after {
                     position: absolute;
-                    content: "";
+                    content: '';
                     height: $grid-unit-size * 2;
                     width: $grid-unit-size * 2;
                     border-radius: $border-radius-base;
