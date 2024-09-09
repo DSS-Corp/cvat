@@ -6,10 +6,11 @@ import './styles.scss';
 import React from 'react';
 import Layout from 'antd/lib/layout';
 import { Col, Row } from 'antd/lib/grid';
-import { CVATLogo } from 'icons';
+// import { CVATLogo } from 'icons';
+import { HGLogoIcon } from 'icons';
 import Icon from '@ant-design/icons';
 import Title from 'antd/lib/typography/Title';
-import SVGSigningBackground from '../../assets/signing-background.svg';
+// import SVGSigningBackground from '../../assets/signing-background.svg';
 
 interface SignInLayoutComponentProps {
     children: JSX.Element | JSX.Element[];
@@ -69,11 +70,12 @@ function SignInLayout(props: SignInLayoutComponentProps): JSX.Element {
     };
     return (
         <Layout>
-            <SVGSigningBackground className='cvat-signing-background' />
+            {/* <SVGSigningBackground className='cvat-signing-background' /> */}
+            <div className='cvat-signing-background' />
             <Header className='cvat-signing-header'>
                 <Row justify='center' align='middle'>
                     <Col {...logoSizes}>
-                        <Icon className='cvat-logo-icon' component={CVATLogo} />
+                        <Icon className='cvat-logo-icon' component={HGLogoIcon} />
                     </Col>
                 </Row>
             </Header>

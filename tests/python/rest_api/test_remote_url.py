@@ -59,12 +59,13 @@ class TestCreateFromRemote:
 
     def test_cannot_create(self, find_users):
         user = find_users(privilege="admin")[0]["username"]
-        remote_resources = ["http://localhost/favicon.ico"]
+        remote_resources = ["http://localhost/hg-logo.svg"]
 
         self._test_cannot_create(user, self.task_id, remote_resources)
 
     def test_can_create(self, find_users):
         user = find_users(privilege="admin")[0]["username"]
-        remote_resources = ["https://docs.cvat.ai/favicons/favicon-32x32.png"]
+        remote_resources = ["https://docs.cvat.ai/favicons/hg-logo.svg"]
+        # remote_resources = ["https://docs.cvat.ai/favicons/favicon-32x32.png"]
 
         self._test_can_create(user, self.task_id, remote_resources)
