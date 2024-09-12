@@ -24,15 +24,18 @@ import { getFileContentType, getContentTypeRemoteFile, getFileNameFromPath } fro
 import BasicConfigurationForm, { BaseConfiguration } from './basic-configuration-form';
 import ProjectSearchField from './project-search-field';
 import ProjectSubsetField from './project-subset-field';
+import TaskPaymentField, { TaskPaymentConfiguration } from './task-payment-field';
 import MultiTasksProgress from './multi-task-progress';
 import AdvancedConfigurationForm, { AdvancedConfiguration, SortingMethod } from './advanced-configuration-form';
 
 type TabName = 'local' | 'share' | 'remote' | 'cloudStorage';
 const core = getCore();
+const defaultCurrency = 'USD';
 
 export interface CreateTaskData {
     projectId: number | null;
     basic: BaseConfiguration;
+    taskPayment: TaskPaymentConfiguration
     subset: string;
     advanced: AdvancedConfiguration;
     labels: any[];
@@ -66,6 +69,10 @@ const defaultState: State = {
     projectId: null,
     basic: {
         name: '',
+    },
+    taskPayment: {
+        amount: null,
+        currency: defaultCurrency,
     },
     subset: '',
     advanced: {
@@ -178,6 +185,15 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 [field]: {
                     location: value,
                 },
+            },
+        }));
+    }
+
+    private handleChangeTaskPayment(field: 'amount' | 'currency', value: number | string): void {
+        this.setState((state) => ({
+            taskPayment: {
+                ...state.taskPayment,
+                [field]: value,
             },
         }));
     }
@@ -738,6 +754,19 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
         );
     }
 
+    private renderPaymentBlock(): JSX.Element {
+        const { taskPayment } = this.state;
+        return (
+            <Col span={24}>
+                <TaskPaymentField
+                    taskPayment={taskPayment}
+                    defaultCurrency={defaultCurrency}
+                    onChange={this.handleChangeTaskPayment}
+                />
+            </Col>
+        );
+    }
+
     private renderSubsetBlock(): JSX.Element | null {
         const { projectId, subset } = this.state;
 
@@ -962,6 +991,7 @@ class CreateTaskContent extends React.PureComponent<Props & RouteComponentProps,
                 </Col>
 
                 {this.renderBasicBlock()}
+                {this.renderPaymentBlock()}
                 {this.renderProjectBlock()}
                 {this.renderSubsetBlock()}
                 {this.renderLabelsBlock()}

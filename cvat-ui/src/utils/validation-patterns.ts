@@ -80,6 +80,11 @@ const validationPatterns = {
         pattern: /^[+]*[-\s0-9]*$/g,
         message: 'Input phone number is not correct',
     },
+
+    validateTaskPayment: {
+        pattern: /^[1-9][0-9]*$/,
+        message: 'Only numbers are allowed',
+    },
 };
 
 export default validationPatterns;
